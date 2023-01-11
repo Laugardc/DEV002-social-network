@@ -27,7 +27,7 @@ export const createUser = (userMail, userPass, userName) => createUserWithEmailA
 export const signUp = (userMail, userPass, onNavigate) => {
   signInWithEmailAndPassword(auth, userMail, userPass)
     .then((userCredential) => {
-      onNavigate('/login');
+      onNavigate('/home');
       window.location.reload();
       // Signed in
       // const user = userCredential.user;
@@ -48,7 +48,7 @@ export const signUp = (userMail, userPass, onNavigate) => {
 export const signInGoogle = async (onNavigate) => {
   try {
     const credentials = await signInWithPopup(auth, provider);
-    onNavigate('/login');
+    onNavigate('/home');
     window.location.reload();
   } catch (error) {
   }
@@ -64,7 +64,7 @@ export const authLogin = () => {
   const userLogin = firebase.auth().onAuthStateChanged((user) => {
     // Usamos el metodo onAuthStateChanged para verificar el estado de autenticacion
     if (user) {
-      window.location.href = '#/login';
+      window.location.href = '#/home';
       // en caso de que se cumpla user se direccion la ruta home
     }
   });

@@ -48,7 +48,7 @@ export const login = () => {
         const userPass = divHome.querySelector('#password').value;
         signUp(userEmail, userPass)
             .then(() => {
-                onNavigate('/login');
+                onNavigate('/home');
             })
         // .catch((error) => {
         //     if (errorcode === 'auth/email-already-in-use') {

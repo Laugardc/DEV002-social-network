@@ -51,7 +51,7 @@ export const register = () => {
 
     createUser(userEmail, userName, userPassword)
       .then(() => {
-        onNavigate('/login');
+        onNavigate('/home');
       })
       .catch((error) => {
         if (error.code === 'auth/email-already-in-use') {
