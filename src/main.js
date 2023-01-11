@@ -5,9 +5,9 @@ import { home } from "./lib/Components/home.js";
 const rootDiv = document.getElementById('root');
 
 const routes = {
-    '/': home,
+    '/': login,
     '/register': register,
-    '/login': login,
+    '/home': home,
     
 };
 
