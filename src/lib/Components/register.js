@@ -1,6 +1,7 @@
 import { createUser, signInGoogle } from "../router.js";
 import { onNavigate } from "../../main.js"
 import { app } from "../Firebase.js";
+import { registerUser } from "../Firebase.js";
 
 export const register = () => {
   const divRegister = document.createElement('div');
@@ -49,19 +50,22 @@ export const register = () => {
     const userEmail = document.querySelector('#email-register').value;
     const userPassword = document.querySelector('#password-register').value;
 
-    createUser(userEmail, userName, userPassword)
-      .then(() => {
-        onNavigate('/home');
-      })
-      .catch((error) => {
-        if (error.code === 'auth/email-already-in-use') {
-          document.querySelector('#errorMessageRegister').innerHTML = 'Éste correo ya está registrado';
-        } else if (error.code === 'auth/invalid-email') {
-          document.querySelector('#errorMessageRegister').innerHTML = 'Correo inválido';
-        } else if (error.code === 'auth/invalid-password') {
-          document.querySelector('#errorMessageRegister').innerHTML = 'Tu clave tiene que tener un mínimo de seis dígitos';
-        }
-      });
+    registerUser(userEmail, userPassword, userName);
+    onNavigate('/home');
+
+    // createUser(userEmail, userName, userPassword)
+    //   .then(() => {
+    //     onNavigate('/home');
+    //   })
+    //   .catch((error) => {
+    //     if (error.code === 'auth/email-already-in-use') {
+    //       document.querySelector('#errorMessageRegister').innerHTML = 'Éste correo ya está registrado';
+    //     } else if (error.code === 'auth/invalid-email') {
+    //       document.querySelector('#errorMessageRegister').innerHTML = 'Correo inválido';
+    //     } else if (error.code === 'auth/invalid-password') {
+    //       document.querySelector('#errorMessageRegister').innerHTML = 'Tu clave tiene que tener un mínimo de seis dígitos';
+    //     }
+    //   });
   });
 
   divRegister.append(
