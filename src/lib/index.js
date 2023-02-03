@@ -126,6 +126,10 @@ export const dislike = (id) => {
   });
 }
 
+export const sumar = (a, b) => {
+  return a + b;
+};
+
 export {
   getAuth,
   GoogleAuthProvider,
@@ -133,5 +137,5 @@ export {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
-
+  updateProfile,
 };
